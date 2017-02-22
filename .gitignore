@@ -38,8 +38,4 @@ Thumbs.db
 .idea/tasks.xml
 .idea/datasources.xml
 .idea/dataSources.ids
-app/libs/
-app/src/main/res/drawable/
-mvvm/libs/
-mvvm/src/main/java/
-mvvm/src/main/res/drawable/
+
