@@ -1,4 +1,4 @@
-package com.applaudo.naibeck.applaudohomeworkmvvm;
+package com.applaudo.naibeck.applaudohomeworkmvvm.ui.activity;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -31,7 +31,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends ViewMo
 
     public abstract VM getViewModel(ViewModel.State savedViewModelState);
 
-    protected abstract void configureViewModelToViewBinding(VB viewBinding, VM mViewModel);
+    protected abstract void configureViewModelToViewBinding(VB viewBinding, VM viewModel);
 
     public VB getViewBinding() {
         if (mViewBinding != null) {
