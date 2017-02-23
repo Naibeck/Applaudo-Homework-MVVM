@@ -1,16 +1,12 @@
 package com.applaudo.naibeck.applaudohomeworkmvvm.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Team extends RealmObject implements Parcelable {
+public class Team extends RealmObject {
     @PrimaryKey
     @SerializedName("id")
     private int mId;
@@ -61,7 +57,7 @@ public class Team extends RealmObject implements Parcelable {
     private String mVideoUrl;
 
     @SerializedName("schedule_games")
-    private List<ScheduleGame> mScheduleGame;
+    private RealmList<ScheduleGame> mScheduleGame;
 
     public int getId() {
         return mId;
@@ -191,72 +187,11 @@ public class Team extends RealmObject implements Parcelable {
         this.mVideoUrl = mVideoUrl;
     }
 
-    public List<ScheduleGame> getScheduleGame() {
+    public RealmList<ScheduleGame> getScheduleGame() {
         return mScheduleGame;
     }
 
-    public void setScheduleGame(List<ScheduleGame> mScheduleGame) {
+    public void setScheduleGame(RealmList<ScheduleGame> mScheduleGame) {
         this.mScheduleGame = mScheduleGame;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.mId);
-        dest.writeString(this.mTeamName);
-        dest.writeInt(this.mSince);
-        dest.writeString(this.mCoach);
-        dest.writeString(this.mTeamNickname);
-        dest.writeString(this.mStadium);
-        dest.writeString(this.mImgLogo);
-        dest.writeString(this.mImgStadium);
-        dest.writeDouble(this.mLatitude);
-        dest.writeDouble(this.mLongitude);
-        dest.writeString(this.mWebsite);
-        dest.writeString(this.mTicketsUrl);
-        dest.writeString(this.mAddress);
-        dest.writeString(this.mPhoneNumber);
-        dest.writeString(this.mDescription);
-        dest.writeString(this.mVideoUrl);
-        dest.writeTypedList(this.mScheduleGame);
-    }
-
-    public Team() {
-    }
-
-    protected Team(Parcel in) {
-        this.mId = in.readInt();
-        this.mTeamName = in.readString();
-        this.mSince = in.readInt();
-        this.mCoach = in.readString();
-        this.mTeamNickname = in.readString();
-        this.mStadium = in.readString();
-        this.mImgLogo = in.readString();
-        this.mImgStadium = in.readString();
-        this.mLatitude = in.readDouble();
-        this.mLongitude = in.readDouble();
-        this.mWebsite = in.readString();
-        this.mTicketsUrl = in.readString();
-        this.mAddress = in.readString();
-        this.mPhoneNumber = in.readString();
-        this.mDescription = in.readString();
-        this.mVideoUrl = in.readString();
-        this.mScheduleGame = in.createTypedArrayList(ScheduleGame.CREATOR);
-    }
-
-    public static final Parcelable.Creator<Team> CREATOR = new Parcelable.Creator<Team>() {
-        @Override
-        public Team createFromParcel(Parcel source) {
-            return new Team(source);
-        }
-
-        @Override
-        public Team[] newArray(int size) {
-            return new Team[size];
-        }
-    };
 }
